@@ -154,7 +154,12 @@
         /// <param name="post">Post.</param>
         public void UpdatePost(Post post)
         {
-            throw new NotImplementedException();
+            var postMatch = this.blogContext.Posts.Find(post.ID);
+            if (postMatch != null)
+            {
+                postMatch = post;
+                this.blogContext.SaveChanges();
+            }
         }
 
         /// <summary>
@@ -177,6 +182,29 @@
         {
             var matchTag = this.blogContext.Tags.FirstOrDefault(t => t.TagName == tag);
             return this.blogContext.Posts.Where(p => p.Tags == matchTag).ToList();
+        }
+
+        /// <summary>
+        /// Get most view posts by size.
+        /// </summary>
+        /// <param name="size">number of posts.</param>
+        /// <returns>List of most viewed posts.</returns>
+        public IList<Post> GetMostViewedPosts(int size)
+        {
+            var mostViewedPosts = this.blogContext.Posts.
+                OrderByDescending(p => p.ViewCount).Take(size).ToList();
+            return mostViewedPosts;
+        }
+
+        /// <summary>
+        /// Get highest posts by ssize.
+        /// </summary>
+        /// <param name="size">number of posts.</param>
+        /// <returns>List of highest posts.</returns>
+        public IList<Post> GetHighestPosts(int size)
+        {
+            var highestPosts = this.blogContext.Posts.OrderByDescending(p => p.TotalRate).Take(size).ToList();
+            return highestPosts;
         }
 
         /// <summary>

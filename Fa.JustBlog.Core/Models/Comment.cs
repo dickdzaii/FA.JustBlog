@@ -9,21 +9,24 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Category entity.
+    /// Comment entity.
     /// </summary>
-    public class Category
+    public class Comment
     {
-        [Key]
         public int ID { get; set; }
 
-        [StringLength(255)]
-        [Required(ErrorMessage = "Category name can't be empty.")]
-        public string CategoryName { get; set; }
+        public string Name { get; set; }
 
-        [StringLength(255)]
-        public string UrlSlug { get; set; }
+        public string Email { get; set; }
 
-        [StringLength(1024)]
-        public string Description { get; set; }
+        public int PostID { get; set; }
+
+        public Post Post { get; set; }
+
+        public string CommentHeader { get; set; }
+
+        public string CommentText { get; set; }
+
+        public DateTime? CommentTime { get; set; }
     }
 }

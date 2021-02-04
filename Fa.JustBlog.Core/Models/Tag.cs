@@ -8,6 +8,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Tag entity.
+    /// </summary>
     public class Tag
     {
         [Key]

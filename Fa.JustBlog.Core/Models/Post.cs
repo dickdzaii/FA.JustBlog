@@ -8,6 +8,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Post entity.
+    /// </summary>
     public class Post
     {
         [Key]
@@ -26,11 +29,13 @@
         [StringLength(255)]
         public string UrlSlug { get; set; }
 
+        [Column("IsPublishedFlag")]
         public bool Published { get; set; }
 
-        [Timestamp]
+        [Column("PostedDate")]
         public DateTime? PostedOn { get; set; }
 
+        [Column("IsModifiedFlag")]
         public bool Modified { get; set; }
 
         public int CategoryID { get; set; }
@@ -38,5 +43,13 @@
         public Category Category { get; set; }
 
         public virtual IList<Tag> Tags { get; set; }
+
+        public int ViewCount { get; set; }
+
+        public int RateCount { get; set; }
+
+        public int TotalRate { get; set; }
+
+        public decimal Rate { get { return this.TotalRate / this.RateCount; } }
     }
 }
