@@ -47,7 +47,7 @@
                 UrlSlug = "post-one",
                 Published = true,
                 PostedOn = new DateTime(2019, 08, 28, 07, 56, 42),
-                Modified = false,
+                Modified = null,
                 CategoryID = 1,
             };
             Post postTwo = new Post()
@@ -58,7 +58,7 @@
                                 ascascascsacacascc",
                 UrlSlug = "ronaldo-retired",
                 Published = false,
-                Modified = false,
+                Modified = null,
                 CategoryID = 2,
             };
             Post postThree = new Post()
@@ -69,7 +69,7 @@
                 UrlSlug = "jeff-bezos-leave-amazon",
                 Published = true,
                 PostedOn = new DateTime(2021, 2, 4, 4, 11, 00),
-                Modified = false,
+                Modified = null,
                 CategoryID = 3,
             };
             context.Posts.AddRange(new List<Post> { postOne, postTwo, postThree });

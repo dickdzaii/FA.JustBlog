@@ -13,18 +13,25 @@
     /// </summary>
     public class Comment
     {
+        [Key]
         public int ID { get; set; }
 
+        [MaxLength(50)]
+        [Required(ErrorMessage = "Please enter your name.")]
         public string Name { get; set; }
 
+        [MaxLength(255)]
+        [Required(ErrorMessage = "Please enter your email.")]
         public string Email { get; set; }
 
         public int PostID { get; set; }
 
         public Post Post { get; set; }
 
+        [MaxLength(255)]
         public string CommentHeader { get; set; }
 
+        [Column("CommentText", TypeName = "NVARCHAR")]
         public string CommentText { get; set; }
 
         public DateTime? CommentTime { get; set; }

@@ -51,8 +51,12 @@
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Post>().HasMany(x => x.Tags).WithMany(x => x.Posts);
-            modelBuilder.Entity<Tag>().HasMany(x => x.Posts).WithMany(x => x.Tags);
+            modelBuilder.Entity<Post>().HasMany(x => x.Tags).WithMany(x => x.Posts).Map(x =>
+            {
+                x.MapLeftKey("PostID");
+                x.MapRightKey("TagID");
+                x.ToTable("PostTagMap");
+            });
         }
     }
 }

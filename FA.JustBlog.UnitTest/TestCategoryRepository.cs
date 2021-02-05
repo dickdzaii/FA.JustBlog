@@ -8,12 +8,12 @@ namespace FA.JustBlog.UnitTest
     [TestClass]
     public class TestCategoryRepository
     {
-        private readonly CategoryRepository categoryRepository=new CategoryRepository();
+        private readonly CategoryRepository categoryRepository = new CategoryRepository();
         [TestMethod]
         public void TestGetAllCategory()
         {
             var test = categoryRepository.GetAllCategories();
-            Assert.AreEqual(3,test.Count);
+            Assert.AreEqual(3, test.Count);
         }
         [TestMethod]
         public void TestFindCategory()
